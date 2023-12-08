@@ -45,7 +45,7 @@ Attempts to load an asset at a defined path asynchronously, and store it in a va
     *    USomeObject* SomeLoadedObject = nullptr;
     *    UAsyncLoader::AsyncLoadObject<USomeObject>(ObjectSoftPtr, SomeLoadedObject);
     *    // Use the loaded object
-    *    if (SomeLoadedObject != nullptr) // Always check for nullptrs on softloaded objects
+    *    if (SomeLoadedObject != nullptr) // Always check for nullptrs on asyncloaded objects
     *    {
     *       // Do something with the loaded object
     *    }
@@ -68,7 +68,7 @@ Useful if you want to be notified when the load is completed.
   * void MyLoadCompleteCallback(UObject* LoadedObject)
   * {
   *     // Handle the loaded object
-  *     if (LoadedObject != nullptr)
+  *     if (LoadedObject != nullptr) // Always check for nullptrs on asyncloaded objects
   *     {
   *         // Do something with the loaded object
   *     }
