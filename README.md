@@ -47,8 +47,12 @@ Loading game assets asynchronously in Unreal Engine offers several benefits:
 
 In summary, loading game assets asynchronously in Unreal Engine contributes to a more responsive, efficient, and immersive gaming experience, particularly in scenarios where large and dynamic game worlds are involved.
 
+-----------------------------------------------------------------------
+### Using the Tool
 
-There are two ways to load with the tool:
+First, implement the this gameplay module into your project.
+
+Then, there are two ways to load with the tool:
 1. Without Callback (Pointer Only)
 ```cpp
     template<class T = UObject>
