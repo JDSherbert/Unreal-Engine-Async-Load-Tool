@@ -1,4 +1,4 @@
-// ©2023 JDSherbert. All rights reserved.
+// Â©2023 JDSherbert. All rights reserved.
 
 #pragma once
 
@@ -21,7 +21,7 @@ DECLARE_DYNAMIC_DELEGATE_OneParam(FOnAsyncLoadComplete, UObject*, LoadedObject);
  * @author JDSherbert
  */
 UCLASS()
-class SOUL_TOOLS_API UAsyncLoader final : public UBlueprintFunctionLibrary
+class SHERBERT_ASYNCLOADER_API UAsyncLoader final : public UBlueprintFunctionLibrary
 {
     GENERATED_BODY()
     
