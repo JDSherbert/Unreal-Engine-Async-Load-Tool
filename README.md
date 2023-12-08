@@ -44,7 +44,7 @@ Loading game assets asynchronously offers several benefits:
 - Parallel Processing: While one set of assets is being loaded, other game-related tasks can be performed simultaneously, maximizing the utilization of available hardware resources.
 - Adaptability to Varying Hardware: Stability and resource delegation.
 
-In summary, loading game assets asynchronously in Unreal Engine contributes to a more responsive, efficient, and immersive gaming experience, particularly in scenarios where large and dynamic game worlds are involved.
+In summary, loading game assets asynchronously contributes to a more responsive, efficient, and immersive gaming experience, particularly in scenarios where large and dynamic game worlds are involved.
 
 -----------------------------------------------------------------------
 ### Using the Tool
