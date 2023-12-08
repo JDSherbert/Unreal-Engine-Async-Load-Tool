@@ -29,6 +29,8 @@ Compact Blueprint Function Library class that contains a set of static functions
 Utilizes the internal streaming assets manager and throwaway lambda callbacks.
 Note that this is naturally latent, so always assess the validity of the asynchronously loaded object before use.
 
+These functions are also avialable in blueprint!
+
 There are two ways to load with the tool:
 1. Without Callback (Pointer Only)
 ```cpp
