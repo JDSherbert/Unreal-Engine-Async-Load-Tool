@@ -25,7 +25,61 @@
 
 -----------------------------------------------------------------------
 ## Overview
-Some words about the project here-
+Compact Blueprint Function Library class that contains a set of static functions that makes asynchronous loading of UObjects more unified and easier to do.
+Utilizes the internal streaming assets manager and throwaway lambda callbacks.
+Note that this is naturally latent, so always assess the validity of the asynchronously loaded object before use.
+
+There are two ways to load with the tool:
+1. Without Callback (Pointer Only)
+```cpp
+    template<class T = UObject>
+    UFUNCTION(BlueprintCallable, Category = "Async Loader")
+    static void AsyncLoadObject(TSoftObjectPtr<T> SoftPtr, T*& Out_LoadedObject);
+```
+Attempts to load an asset at a defined path asynchronously, and store it in a variable on completion.
+```cpp    
+    * EXAMPLE:
+    * void MyFunction()
+    * { 
+    *    TSoftObjectPtr<USomeObject> ObjectSoftPtr = SoftObjectPtrToYourObject;
+    *    USomeObject* SomeLoadedObject = nullptr;
+    *    UAsyncLoader::AsyncLoadObject<USomeObject>(ObjectSoftPtr, SomeLoadedObject);
+    *    // Use the loaded object
+    *    if (SomeLoadedObject != nullptr) // Always check for nullptrs on softloaded objects
+    *    {
+    *       // Do something with the loaded object
+    *    }
+    * }
+```
+
+
+2. With Callback
+```cpp
+    template<class T = UObject>
+    UFUNCTION(BlueprintCallable, Category = "Async Loader")
+    static void AsyncLoadObject(TSoftObjectPtr<T> SoftPtr, void(*Callback)(T* LoadedObject));
+```
+Attempts to load an asset at a defined path asynchronously.
+Will call the supplied function pointer on success, passing the loaded object pointer as a parameter.
+Useful if you want to be notified when the load is completed.
+```cpp
+  * EXAMPLE:
+  * @code
+  * void MyLoadCompleteCallback(UObject* LoadedObject)
+  * {
+  *     // Handle the loaded object
+  *     if (LoadedObject != nullptr)
+  *     {
+  *         // Do something with the loaded object
+  *     }
+  * }
+  *
+  * void MyFunction()
+  * {
+  *     TSoftObjectPtr<UObject> ObjectSoftPtr = SoftObjectPtrToYourObject;
+  *     UAsyncLoader::AsyncLoadObject(ObjectSoftPtr, &MyLoadCompleteCallback);
+  * }
+```
 
 
 -----------------------------------------------------------------------
