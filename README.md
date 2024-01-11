@@ -59,18 +59,18 @@ Then, there are two ways to load with the tool:
 ```
 Attempts to load an asset at a defined path asynchronously, and store it in a variable on completion.
 ```cpp    
-    * EXAMPLE:
-    * void MyFunction()
-    * { 
-    *    TSoftObjectPtr<USomeObject> ObjectSoftPtr = SoftObjectPtrToYourObject;
-    *    USomeObject* SomeLoadedObject = nullptr;
-    *    UAsyncLoader::AsyncLoadObject<USomeObject>(ObjectSoftPtr, SomeLoadedObject);
-    *    // Use the loaded object
-    *    if (SomeLoadedObject != nullptr) // Always check for nullptrs on asyncloaded objects
-    *    {
-    *       // Do something with the loaded object
-    *    }
-    * }
+// EXAMPLE:
+void MyClass::MyFunction()
+{ 
+    TSoftObjectPtr<USomeObject> ObjectSoftPtr = SoftObjectPtrToYourObject;
+    USomeObject* SomeLoadedObject = nullptr;
+    UAsyncLoader::AsyncLoadObject<USomeObject>(ObjectSoftPtr, SomeLoadedObject);
+    // Use the loaded object
+    if (SomeLoadedObject != nullptr) // Always check for nullptrs on asyncloaded objects
+    {
+        // Do something with the loaded object
+    }
+}
 ```
 
 
@@ -84,22 +84,21 @@ Attempts to load an asset at a defined path asynchronously.
 Will call the supplied function pointer on success, passing the loaded object pointer as a parameter.
 Useful if you want to be notified when the load is completed.
 ```cpp
-  * EXAMPLE:
-  * @code
-  * void MyLoadCompleteCallback(UObject* LoadedObject)
-  * {
-  *     // Handle the loaded object
-  *     if (LoadedObject != nullptr) // Always check for nullptrs on asyncloaded objects
-  *     {
-  *         // Do something with the loaded object
-  *     }
-  * }
-  *
-  * void MyFunction()
-  * {
-  *     TSoftObjectPtr<UObject> ObjectSoftPtr = SoftObjectPtrToYourObject;
-  *     UAsyncLoader::AsyncLoadObject(ObjectSoftPtr, &MyLoadCompleteCallback);
-  * }
+// EXAMPLE:
+void MyClass::MyLoadCompleteCallback(UObject* LoadedObject)
+{
+    // Handle the loaded object
+    if (LoadedObject != nullptr) // Always check for nullptrs on asyncloaded objects
+    {
+        // Do something with the loaded object
+    }
+}
+
+void MyClass::MyFunction()
+{
+    TSoftObjectPtr<UObject> ObjectSoftPtr = SoftObjectPtrToYourObject;
+    UAsyncLoader::AsyncLoadObject(ObjectSoftPtr, &MyLoadCompleteCallback);
+}
 ```
 
 
