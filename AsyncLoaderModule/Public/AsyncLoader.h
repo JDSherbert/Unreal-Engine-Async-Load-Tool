@@ -11,12 +11,10 @@
 DECLARE_DYNAMIC_DELEGATE_OneParam(FOnAsyncLoadComplete, UObject*, LoadedObject);
 
 /**
- * Async Load Tool Class
- * \n
- * : UBlueprintFunctionLibrary
- * \n \n
+ * Async Load Tool
  * This class contains a set of static functions that makes asynchronous loading of UObjects more unified and easier to do.
  * Utilizes the internal streaming assets manager and throwaway lambda callbacks.
+ *
  * @since Unreal Engine 5.2
  * @author JDSherbert
  */
@@ -48,6 +46,7 @@ public:
     * @tparam T The class of UObject to asynchronously load. Should be automatically determined by the SoftPtr reference.
     * @param SoftPtr The Soft Pointer to load. This is normally a path reference to the asset's template location in the project.
     * @param Out_LoadedObject The reference to a variable that will be populated with the loaded object.
+    *
     * @since Unreal Engine 5.2
     * @author JDSherbert
     */
@@ -81,6 +80,7 @@ public:
     * @tparam T The class of UObject to asynchronously load. Should be automatically determined by the SoftPtr reference.
     * @param SoftPtr The Soft Pointer to load. This is normally a path reference to the asset's template location in the project.
     * @param Callback The function to call on a success, with the LoadedObject as a parameter.
+    *
     * @since Unreal Engine 5.2
     * @author JDSherbert
     */
@@ -92,8 +92,10 @@ private:
 
     /**
     * Validates a soft pointer reference to ensure it is pointer to a valid memory address with the correct type.
+    *
     * @param SoftPtr The Soft Pointer to load. This is normally a path reference to the asset's template location in the project.
     * @returns bool - true if valid.
+    *
     * @since Unreal Engine 5.2
     * @author JDSherbert
     */
